@@ -4,9 +4,9 @@ import { View, Text, Button, PermissionsAndroid, Alert } from 'react-native';
 import Vapi from '@vapi-ai/react-native'; 
 
 // Replace with your actual Public Key
-const VAPI_PUBLIC_KEY = 'a0bb08c0-e41d-45fb-97ee-eebb39300db9'; 
+const VAPI_PUBLIC_KEY = ''; 
 // Replace with your Assistant ID
-const ASSISTANT_ID = 'c2929642-b8de-414e-a156-82ccf9c8fce5'; 
+const ASSISTANT_ID = ''; 
 
 // 2. Initialize Vapi client outside the component (or use a ref)
 const vapi = new Vapi(VAPI_PUBLIC_KEY);
