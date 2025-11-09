@@ -1,156 +1,57 @@
-import * as React from 'react'
-import { Text, TextInput, TouchableOpacity, View, StyleSheet, ActivityIndicator } from 'react-native'
-import { useSignIn } from '@clerk/clerk-expo'
-import { Link, useRouter } from 'expo-router'
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
+import { Link } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// --- CalMind Style Guide Components (Adopted from SignUpScreen) ---
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: '#F5F7FA', // Calming Background
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#333333',
-    marginBottom: 30,
-    textAlign: 'center',
-  },
-  input: {
-    height: 50,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#E0E0E0',
-  },
-  button: {
-    height: 50,
-    backgroundColor: '#4A90E2', // Primary Blue
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 15,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  linkRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20,
-    gap: 5,
-  },
-  linkText: {
-    color: '#4A90E2', // Primary Blue for links
-    fontWeight: '600',
-    fontSize: 16,
-  },
-  errorText: {
-    color: '#D0021B',
-    textAlign: 'center',
-    marginBottom: 10,
-    fontSize: 14,
-  },
-  baseText: {
-    color: '#777777',
-    fontSize: 16,
-  }
-})
+export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-// --- Sign In Component ---
-export default function SignInScreen() {
-  const { signIn, setActive, isLoaded } = useSignIn()
-  const router = useRouter()
-
-  const [emailAddress, setEmailAddress] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [error, setError] = React.useState<string | null>(null)
-  const [isLoading, setIsLoading] = React.useState(false)
-
-  // Handle the submission of the sign-in form
-  const onSignInPress = async () => {
-    if (!isLoaded || isLoading) return
-
-    setError(null)
-    setIsLoading(true)
+  const handleSignIn = async () => {
+    if (!email || !password) {
+      Alert.alert("Error", "Please fill all fields");
+      return;
+    }
 
     try {
-      const signInAttempt = await signIn!.create({
-        identifier: emailAddress,
-        password,
-      })
+      const res = await fetch("http://192.168.0.198:3000/sign-in", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
 
-      if (signInAttempt.status === 'complete') {
-        await setActive({ session: signInAttempt.createdSessionId })
-        router.replace('/')
+      if (res.ok) {
+        await AsyncStorage.setItem("userToken", email);
+        Alert.alert("Success", "Logged in!");
       } else {
-        // Handle incomplete status if further steps (like MFA) are required
-        console.error("Sign-in incomplete status:", JSON.stringify(signInAttempt, null, 2))
+        Alert.alert("Error", data.error);
       }
-    } catch (err: any) {
-      // Catch network errors, invalid credentials, form errors (status 422)
-      const errorMessage = err.errors?.[0]?.longMessage || 'Invalid email or password. Please try again.'
-      setError(errorMessage)
-      console.error("Sign-in error:", JSON.stringify(err, null, 2))
-    } finally {
-      setIsLoading(false)
+    } catch (err) {
+      console.error(err);
+      Alert.alert("Error", "Failed to sign in");
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome Back to CalMind</Text>
-      
-      {error && <Text style={styles.errorText}>{error}</Text>}
+      <Text style={styles.title}>Sign In</Text>
 
-      <TextInput
-        style={styles.input}
-        autoCapitalize="none"
-        value={emailAddress}
-        placeholder="Enter email"
-        onChangeText={setEmailAddress}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        value={password}
-        placeholder="Enter password"
-        secureTextEntry={true}
-        onChangeText={setPassword}
-      />
-      
-      <TouchableOpacity 
-        onPress={onSignInPress} 
-        style={styles.button}
-        disabled={isLoading || !emailAddress || !password}
-      >
-        {isLoading ? (
-            <ActivityIndicator color="white" />
-        ) : (
-            <Text style={styles.buttonText}>Continue</Text>
-        )}
-      </TouchableOpacity>
+      <TextInput placeholder="Email" value={email} onChangeText={setEmail} style={styles.input} keyboardType="email-address" />
+      <TextInput placeholder="Password" value={password} onChangeText={setPassword} style={styles.input} secureTextEntry />
 
-      <View style={styles.linkRow}>
-        <Text style={styles.baseText}>Need an account?</Text>
-        <Link href="/sign-up">
-          <Text style={styles.linkText}>Sign up</Text>
-        </Link>
-      </View>
+      <Button title="Sign In" onPress={handleSignIn} />
 
-      <View style={styles.linkRow}>
-        {/* Placeholder for Forgot Password */}
-        <Link href="/reset-password">
-          <Text style={styles.linkText}>Forgot Password?</Text>
-        </Link>
-      </View>
+      <Text style={styles.switchText}>
+        Don't have an account? <Link href="/(auth)/sign-up">Sign Up</Link>
+      </Text>
     </View>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, justifyContent: "center" },
+  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
+  input: { borderWidth: 1, borderColor: "#ccc", padding: 10, marginBottom: 15, borderRadius: 6 },
+  switchText: { marginTop: 20, textAlign: "center" },
+});
