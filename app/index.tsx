@@ -1,12 +1,6 @@
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+// app/index.tsx
+import { Redirect } from "expo-router";
 
-import Welcome from './welcome'
-
-export default function App() {
-  return (
-    <View>
-      <Welcome />
-    </View>
-  )
+export default function Index() {
+  return <Redirect href="/UserPage" />;
 }

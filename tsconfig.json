@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "app/welcome.tsx", "app/meditation.tsx", "app/journaling.tsx", "app/index.tsx", "app/exercise.tsx", "app/breathing-timer.tsx", "app/(auth)/sign-up.tsx", "app/(auth)/sign-in.tsx"  ]
 }
