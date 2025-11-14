@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import {
   Image,
@@ -8,6 +9,19 @@ import {
   TextInput,
   TouchableOpacity,
   View
+=======
+import React, { useState } from 'react';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  ScrollView,
+  Alert,
+  StyleSheet,
+  Image,
+  Linking
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 } from 'react-native';
 
 const SpotifyPreferencesPage = ({ navigation }) => {
@@ -45,7 +59,11 @@ const SpotifyPreferencesPage = ({ navigation }) => {
 
   const handleNext = () => {
     if (validateForm()) {
+<<<<<<< HEAD
       
+=======
+      Alert.alert('Success', 'Spotify preferences saved!');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
       navigation.navigate('CompletionPage');
     }
   };

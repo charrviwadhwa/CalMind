@@ -1,14 +1,25 @@
 // app/employees-dash.jsx
+<<<<<<< HEAD
 import { Feather, FontAwesome5, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Link, useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
+=======
+import React from "react";
+import { View, Text, Image, Pressable, ScrollView } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome5, Feather } from '@expo/vector-icons';
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 
 export default function EmployeesDash() {
   const router = useRouter();
 
   return (
     <View style={{ flex: 1, backgroundColor: "#FFF7F0" }}>
+<<<<<<< HEAD
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 100 , paddingTop: 50}}>
+=======
+      <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 100 }}>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
         {/* Welcome Header */}
         <View style={{ marginBottom: 20 }}>
           <Text style={{ fontSize: 28, fontWeight: "800", color: "#1F2937" }}>Welcome Back!</Text>
@@ -47,15 +58,138 @@ export default function EmployeesDash() {
               />
             </View>
             <View style={{ marginLeft: 16, flex: 1 }}>
+<<<<<<< HEAD
               <Text style={{ fontSize: 20, fontWeight: "700", color: "#1F2937" }}>Nandita</Text>
               <Text style={{ color: "#D97706", marginTop: 4, fontSize: 14 }}>Aspiring Developer</Text>
+=======
+              <Text style={{ fontSize: 20, fontWeight: "700", color: "#1F2937" }}>CalMind Wellness</Text>
+              <Text style={{ color: "#D97706", marginTop: 4, fontSize: 14 }}>4.9 ★ (1200+ employee reviews)</Text>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
             </View>
           </View>
 
           {/* Stats Row */}
+<<<<<<< HEAD
           
 
          
+=======
+          <View style={{ 
+            flexDirection: "row", 
+            backgroundColor: "#FFF7ED", 
+            borderRadius: 16, 
+            padding: 16,
+            marginBottom: 20 
+          }}>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text style={{ fontWeight: "800", fontSize: 18, color: "#EA580C" }}>2 Years</Text>
+              <Text style={{ color: "#9A3412", fontSize: 12 }}>Active Program</Text>
+            </View>
+            <View style={{ flex: 1, alignItems: "center", borderLeftWidth: 1, borderRightWidth: 1, borderColor: "#FDBA74" }}>
+              <Text style={{ fontWeight: "800", fontSize: 18, color: "#EA580C" }}>Free</Text>
+              <Text style={{ color: "#9A3412", fontSize: 12 }}>AI Check-ins</Text>
+            </View>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text style={{ fontWeight: "800", fontSize: 18, color: "#EA580C" }}>180+</Text>
+              <Text style={{ color: "#9A3412", fontSize: 12 }}>Sessions</Text>
+            </View>
+          </View>
+
+          {/* About CalMind */}
+          <View style={{ marginBottom: 20 }}>
+            <Text style={{ fontWeight: "700", color: "#111827", marginBottom: 8, fontSize: 18 }}>About CalMind</Text>
+            <Text style={{ color: "#4B5563", lineHeight: 22, fontSize: 14 }}>
+              CalMind is specifically designed for employee mental wellness — providing a safe, confidential space 
+              for you to prioritize your mental health. Our platform combines AI-powered support with professional 
+              resources to help you navigate stress, build resilience, and maintain work-life balance.
+            </Text>
+          </View>
+
+          {/* Avana AI Assistant Section */}
+          <View style={{ 
+            backgroundColor: "#FFFBEB", 
+            borderRadius: 16, 
+            padding: 18, 
+            marginBottom: 20,
+            borderLeftWidth: 4,
+            borderLeftColor: "#F59E0B"
+          }}>
+            <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 12 }}>
+              <View style={{ 
+                width: 40, 
+                height: 40, 
+                borderRadius: 20, 
+                backgroundColor: "#FEF3C7", 
+                alignItems: "center", 
+                justifyContent: "center",
+                marginRight: 12
+              }}>
+                <Text style={{ fontSize: 20 }}>🤖</Text>
+              </View>
+              <View>
+                <Text style={{ fontWeight: "700", fontSize: 16 }}>Meet Avana</Text>
+                <Text style={{ color: "#92400E", fontSize: 12 }}>Your AI Wellness Companion</Text>
+              </View>
+            </View>
+            <Text style={{ color: "#92400E", marginBottom: 16, fontSize: 14, lineHeight: 20 }}>
+              Avana checks in on your mood, provides personalized exercises, and helps schedule sessions based on your emotional needs.
+            </Text>
+            <Pressable
+              onPress={() => router.push("/avana-appointment")}
+              style={{
+                backgroundColor: "#F59E0B",
+                paddingVertical: 14,
+                borderRadius: 12,
+                alignItems: "center",
+                shadowColor: "#F59E0B",
+                shadowOpacity: 0.3,
+                shadowRadius: 8,
+                elevation: 4,
+              }}
+            >
+              <Text style={{ color: "white", fontWeight: "700", fontSize: 16 }}>Schedule with Avana</Text>
+            </Pressable>
+          </View>
+
+          {/* Quick Sessions */}
+          <View style={{ marginBottom: 20 }}>
+            <Text style={{ fontWeight: "700", marginBottom: 12, fontSize: 18 }}>Quick Sessions</Text>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <Pressable style={{
+                backgroundColor: "#FFF4E6",
+                flex: 1,
+                marginRight: 8,
+                padding: 16,
+                borderRadius: 16,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOpacity: 0.05,
+                shadowRadius: 6,
+                elevation: 2,
+              }}>
+                <MaterialCommunityIcons name="chat" size={26} color="#EA580C" />
+                <Text style={{ marginTop: 8, fontWeight: "600", color: "#EA580C" }}>Chat Session</Text>
+                <Text style={{ fontSize: 12, color: "#9A3412", marginTop: 4 }}>Instant support</Text>
+              </Pressable>
+              <Pressable style={{
+                backgroundColor: "#FFF4E6",
+                flex: 1,
+                marginLeft: 8,
+                padding: 16,
+                borderRadius: 16,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOpacity: 0.05,
+                shadowRadius: 6,
+                elevation: 2,
+              }}>
+                <MaterialIcons name="video-call" size={26} color="#EA580C" />
+                <Text style={{ marginTop: 8, fontWeight: "600", color: "#EA580C" }}>Video Call</Text>
+                <Text style={{ fontSize: 12, color: "#9A3412", marginTop: 4 }}>Face-to-face</Text>
+              </Pressable>
+            </View>
+          </View>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 
           {/* Progress Reports */}
           <View style={{ 

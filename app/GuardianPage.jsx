@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import {
   Image,
@@ -7,6 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   View
+=======
+import React, { useState } from 'react';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  ScrollView,
+  Alert,
+  StyleSheet,
+  Image
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 } from 'react-native';
 
 const GuardianPage = ({ navigation }) => {
@@ -63,7 +76,11 @@ const GuardianPage = ({ navigation }) => {
         relationship: ''
       });
       setErrors({});
+<<<<<<< HEAD
       
+=======
+      Alert.alert('Success', 'Guardian added successfully!');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     }
   };
 
@@ -73,7 +90,11 @@ const GuardianPage = ({ navigation }) => {
 
   const handleNext = () => {
     if (guardians.length > 0) {
+<<<<<<< HEAD
       
+=======
+      Alert.alert('Success', 'Proceeding to next step!');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
       navigation.navigate('TherapyHistoryPage');
     }
   };

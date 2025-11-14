@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import { MaterialIcons } from '@expo/vector-icons';
 import { useEffect, useRef, useState } from 'react';
 import { Animated, Dimensions, Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+=======
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, Pressable, ScrollView, Dimensions, StyleSheet, Image, Animated } from "react-native";
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome5, Feather, Ionicons } from '@expo/vector-icons';
+import Sessions from './sessions';
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 const { width, height } = Dimensions.get('window');
 
 // --- Mock Data ---
@@ -26,6 +33,7 @@ const smileyData = [
   { id: 16, label: 'Lovely', source: require('../assets/images/smiles/smile16.png') },
 ];
 
+<<<<<<< HEAD
 // 9 blocks data with routes
 const blockData = [
   { id: 'breathing', label: 'Breathing exercises', color: '#EAF6F3', icon: require('../assets/images/icons8-cloud-16.png'), route: "BreathingTimer" },
@@ -37,6 +45,19 @@ const blockData = [
   { id: 'physical', label: 'Physical activities', color: '#EAF6F3', icon: require('../assets/images/icons8-yoga-50.png')},
   { id: 'sleep', label: 'Better sleep', color: '#C4E0F9', icon: require('../assets/images/icons8-sleep-100.png') },
   { id: 'nopref', label: 'No preference', color: '#FFEEDF', icon: require('../assets/images/icons8-shield-100.png')},
+=======
+// 9 blocks data from About component
+const blockData = [
+  { id: 'breathing', label: 'Breathing exercises', color: '#EAF6F3', icon: require('../assets/images/icons8-cloud-16.png') },
+  { id: 'journaling', label: 'Journaling', color: '#FFF8EB', icon: require('../assets/images/icons8-pencil-100.png') },
+  { id: 'meditation', label: 'Meditation', color: '#E3F6EC', icon: require('../assets/images/icons8-meditation-64.png') },
+  { id: 'mood', label: 'Mood tracking', color: '#F1EFF8', icon: require('../assets/images/icons8-happy-48.png') },
+  { id: 'selflove', label: 'Self-love', color: '#F8E9E9', icon: require('../assets/images/icons8-heart-100.png') },
+  { id: 'gratitude', label: 'Gratitude practices', color: '#FFFDE9', icon: require('../assets/images/icons8-gratitude-64.png') },
+  { id: 'physical', label: 'Physical activities', color: '#EAF6F3', icon: require('../assets/images/icons8-yoga-50.png') },
+  { id: 'sleep', label: 'Better sleep', color: '#C4E0F9', icon: require('../assets/images/icons8-sleep-100.png') },
+  { id: 'nopref', label: 'No preference', color: '#FFEEDF', icon: require('../assets/images/icons8-shield-100.png') },
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 ];
 
 // Quotes for carousel
@@ -209,21 +230,36 @@ const SmileyButton = ({ smiley, isSelected, onPress }) => {
   );
 };
 
+<<<<<<< HEAD
 // Component for the blocks grid - WITH NAVIGATION
 const BlockItem = ({ item, isSelected, onPress }) => {
   const darkerBorderColor = darkenColor(item.color, 20);
 
+=======
+// Component for the blocks grid - UPDATED WITH BIGGER IMAGES
+const BlockItem = ({ item, isSelected, onPress }) => {
+  const darkerBorderColor = darkenColor(item.color, 20);
+  
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   return (
     <Pressable
       style={[
         styles.block,
         { 
           backgroundColor: item.color, 
+<<<<<<< HEAD
+=======
+          borderColor: darkerBorderColor,
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
           borderWidth: isSelected ? 4 : 2,
           borderColor: isSelected ? '#0047AB' : darkerBorderColor,
         }
       ]}
+<<<<<<< HEAD
       onPress={onPress}  // <--- Make sure this is used directly
+=======
+      onPress={onPress}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     >
       <View style={styles.blockContent}>
         <View style={styles.blockTextContent}>
@@ -231,11 +267,23 @@ const BlockItem = ({ item, isSelected, onPress }) => {
         </View>
         <Image
           source={item.icon}
+<<<<<<< HEAD
           style={[styles.blockIcon]}
           resizeMode="contain"
         />
       </View>
 
+=======
+          style={[
+            styles.blockIcon,
+            item.label === 'Better sleep' && isSelected && { tintColor: '#0047AB' }
+          ]}
+          resizeMode="contain"
+        />
+      </View>
+      
+      {/* Arrow button in bottom right corner */}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
       <View style={styles.arrowCircle}>
         <MaterialIcons name="arrow-forward" size={16} color="white" style={styles.arrowIcon} />
       </View>
@@ -243,7 +291,10 @@ const BlockItem = ({ item, isSelected, onPress }) => {
   );
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 // Progress component
 const ProgressSection = ({ progress }) => (
   <View style={styles.progressSection}>
@@ -318,6 +369,63 @@ const QuotesCarousel = () => {
   );
 };
 
+<<<<<<< HEAD
+=======
+// Updated Floating Navigation Bar with working navigation
+const NavigationBar = ({ activeTab, onTabPress }) => {
+  const [expandedTab, setExpandedTab] = useState(activeTab);
+
+  const navItems = [
+    { key: 'home', icon: 'home', label: 'Home' },
+    { key: 'sessions', icon: 'calendar-today', label: 'Sessions' },
+    { key: 'forums', icon: 'forum', label: 'Forums' },
+    { key: 'profile', icon: 'account-circle', label: 'Profile' },
+    { key: 'settings', icon: 'settings', label: 'Settings' },
+  ];
+
+  const handleTabPress = (tabKey) => {
+    if (expandedTab === tabKey) {
+      // If clicking the already expanded tab, navigate and keep it expanded
+      onTabPress(tabKey);
+    } else {
+      // If clicking a different tab, expand it and navigate
+      setExpandedTab(tabKey);
+      onTabPress(tabKey);
+    }
+  };
+
+  return (
+    <View style={styles.navigationBar}>
+      {navItems.map((item) => (
+        <Pressable
+          key={item.key}
+          style={[
+            styles.navButton,
+            activeTab === item.key && styles.navButtonActive,
+            expandedTab === item.key && styles.navButtonExpanded
+          ]}
+          onPress={() => handleTabPress(item.key)}
+        >
+          <MaterialIcons 
+            name={item.icon} 
+            size={22} 
+            color={activeTab === item.key ? '#EC4899' : '#6B7280'} 
+          />
+          {expandedTab === item.key && (
+            <Text style={[
+              styles.navButtonText,
+              activeTab === item.key && styles.navButtonTextActive
+            ]}>
+              {item.label}
+            </Text>
+          )}
+        </Pressable>
+      ))}
+    </View>
+  );
+};
+
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 // Stats Section with horizontal scroll
 const StatsSection = () => (
   <ScrollView 
@@ -350,10 +458,17 @@ const StatsSection = () => (
 );
 
 // --- Main Home Component ---
+<<<<<<< HEAD
 const Home = () => {
   const navigation = useNavigation();
   const [selectedSmiley, setSelectedSmiley] = useState(3); // Default to Fun
   const [selectedBlocks, setSelectedBlocks] = useState([]);
+=======
+const Home = ({ navigation }) => {
+  const [selectedSmiley, setSelectedSmiley] = useState(3); // Default to Fun
+  const [selectedBlocks, setSelectedBlocks] = useState([]);
+  const [activeTab, setActiveTab] = useState('home');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   const userName = 'Nandita';
   const progress = 92;
 
@@ -365,18 +480,58 @@ const Home = () => {
     );
   };
 
+<<<<<<< HEAD
+=======
+  const handleTabPress = (tab) => {
+    setActiveTab(tab);
+    
+    // Navigation logic based on tab pressed
+    switch(tab) {
+      case 'home':
+        // Already on home, do nothing or refresh
+        break;
+      case 'sessions':
+        navigation.navigate('./sessions');
+        break;
+      case 'forums':
+        // Forums page - you can create this page later
+        // navigation.navigate('Forums');
+        alert('Forums page coming soon!');
+        break;
+      case 'profile':
+        navigation.navigate('UserPage');
+        break;
+      case 'settings':
+        // Settings page - you can create this page later
+        // navigation.navigate('Settings');
+        alert('Settings page coming soon!');
+        break;
+      default:
+        break;
+    }
+  };
+
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   const selectedSmileyData = smileyData.find(smiley => smiley.id === selectedSmiley);
 
   return (
     <View style={{ flex: 1, backgroundColor: "#F8FAFC" }}>
       <ScrollView 
         contentContainerStyle={{ 
+<<<<<<< HEAD
           paddingBottom: 120, // Increased for floating navbar
+=======
+          paddingBottom: 100,
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
           minHeight: height
         }}
         showsVerticalScrollIndicator={false}
       >
+<<<<<<< HEAD
         {/* Top Header */}
+=======
+        {/* Top Header - Simplified without top navbar */}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
         <View style={styles.header}>
           <AnimatedBubbleBackground />
           
@@ -420,19 +575,27 @@ const Home = () => {
           {/* Blocks Header */}
           <Text style={styles.blocksTitle}>What would you like to practice?</Text>
 
+<<<<<<< HEAD
           {/* Blocks Grid - WITH NAVIGATION */}
+=======
+          {/* Blocks Grid - UPDATED WITH BIGGER IMAGES */}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
           <View style={styles.blocksGrid}>
             {blockData.map((item) => (
               <BlockItem
                 key={item.id}
                 item={item}
                 isSelected={selectedBlocks.includes(item.id)}
+<<<<<<< HEAD
                 onPress={() => {
                   toggleBlock(item.id);
                   if (item.route) {
                     navigation.navigate(item.route);
                   }
                 }}
+=======
+                onPress={() => toggleBlock(item.id)}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
               />
             ))}
           </View>
@@ -447,6 +610,12 @@ const Home = () => {
           <QuotesCarousel />
         </View>
       </ScrollView>
+<<<<<<< HEAD
+=======
+      
+      {/* Updated Floating Navigation Bar with working navigation */}
+      <NavigationBar activeTab={activeTab} onTabPress={handleTabPress} />
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     </View>
   );
 };
@@ -471,10 +640,17 @@ const styles = StyleSheet.create({
   bubble4: { width: 70, height: 70, bottom: 40, right: 50 },
   bubble5: { width: 50, height: 50, top: 200, right: 20 },
 
+<<<<<<< HEAD
   // Header Styles
   header: {
     padding: 36,
     paddingTop: 50,
+=======
+  // Header Styles - REMOVED TOP NAVBAR
+  header: {
+    padding: 36,
+    paddingTop: 50, // Added more top padding to account for status bar
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     paddingBottom: 32,
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
@@ -548,7 +724,11 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   smileyButtonSelected: {
+<<<<<<< HEAD
     borderColor: '#EC4899',
+=======
+    borderColor: '#EC4899', // Pink color
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     shadowColor: '#EC4899',
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -569,7 +749,11 @@ const styles = StyleSheet.create({
     height: 28,
   },
   smileyLabelSelected: {
+<<<<<<< HEAD
     color: '#EC4899',
+=======
+    color: '#EC4899', // Pink color
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     fontWeight: '600',
   },
 
@@ -604,7 +788,11 @@ const styles = StyleSheet.create({
   progressPercentage: {
     fontSize: 20,
     fontWeight: '800',
+<<<<<<< HEAD
     color: '#EC4899',
+=======
+    color: '#EC4899', // Pink color
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   },
   progressBarContainer: {
     marginBottom: 8,
@@ -618,13 +806,21 @@ const styles = StyleSheet.create({
   },
   progressFill: {
     height: "100%",
+<<<<<<< HEAD
     backgroundColor: "#EC4899",
+=======
+    backgroundColor: "#EC4899", // Pink color
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     borderRadius: 3,
   },
 
   // Carousel Styles
   carouselContainer: {
+<<<<<<< HEAD
     backgroundColor: 'rgba(236, 72, 153, 0.1)',
+=======
+    backgroundColor: 'rgba(236, 72, 153, 0.1)', // Light pink background
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     borderRadius: 16,
     marginTop: 20,
     padding: 16,
@@ -661,11 +857,19 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   carouselDotActive: {
+<<<<<<< HEAD
     backgroundColor: '#EC4899',
     width: 20,
   },
 
   // Blocks Section
+=======
+    backgroundColor: '#EC4899', // Pink color
+    width: 20,
+  },
+
+  // Blocks Section - UPDATED WITH BIGGER IMAGES
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   blocksTitle: {
     fontSize: 20,
     fontWeight: "800",
@@ -711,8 +915,13 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   blockIcon: {
+<<<<<<< HEAD
     width: 50,
     height: 50,
+=======
+    width: 50, // INCREASED FROM 40 to 50
+    height: 50, // INCREASED FROM 40 to 50
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   },
   arrowCircle: {
     position: 'absolute',
@@ -764,7 +973,11 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: 20,
     fontWeight: '800',
+<<<<<<< HEAD
     color: '#EC4899',
+=======
+    color: '#EC4899', // Pink color
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     marginBottom: 4,
   },
   statLabel: {
@@ -773,6 +986,56 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
   },
+<<<<<<< HEAD
+=======
+
+  // Updated Floating Navigation Bar Styles
+  navigationBar: {
+    position: "absolute",
+    left: 20,
+    right: 20,
+    bottom: 20,
+    backgroundColor: "white",
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: "#F3F4F6",
+  },
+  navButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    flexDirection: 'row',
+    gap: 8,
+    minWidth: 50,
+  },
+  navButtonActive: {
+    backgroundColor: 'rgba(236, 72, 153, 0.1)',
+  },
+  navButtonExpanded: {
+    backgroundColor: 'rgba(236, 72, 153, 0.05)',
+  },
+  navButtonText: {
+    color: "#6B7280",
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  navButtonTextActive: {
+    color: "#EC4899",
+    fontWeight: '600',
+  },
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 });
 
 export default Home;

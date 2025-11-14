@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react';
 import {
   Image,
@@ -7,6 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   View
+=======
+import React, { useState } from 'react';
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  ScrollView,
+  Alert,
+  StyleSheet,
+  Image
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 } from 'react-native';
 
 const UserPage = ({ navigation }) => {
@@ -61,7 +74,11 @@ const UserPage = ({ navigation }) => {
 
   const handleNext = () => {
     if (validateForm()) {
+<<<<<<< HEAD
       
+=======
+      Alert.alert('Success', 'User information saved!');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
       navigation.navigate('GuardianPage');
     }
   };

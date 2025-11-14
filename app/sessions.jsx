@@ -1,4 +1,5 @@
 // app/sessions.jsx
+<<<<<<< HEAD
 import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 import { Dimensions, Pressable, ScrollView, Text, View } from "react-native";
@@ -7,6 +8,17 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Sessions() {
  const navigation = useNavigation();
+=======
+import React from "react";
+import { View, Text, Pressable, ScrollView, Dimensions } from "react-native";
+import { Link, useRouter } from "expo-router";
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome5, Feather, Ionicons } from '@expo/vector-icons';
+
+const { height } = Dimensions.get('window');
+
+export default function Sessions() {
+  const router = useRouter();
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 
   // Sample data for sessions
   const upcomingSessions = [
@@ -74,7 +86,11 @@ export default function Sessions() {
         contentContainerStyle={{ 
           paddingTop: 36, 
           paddingHorizontal: 16,
+<<<<<<< HEAD
           paddingBottom: 120, // Increased for floating navbar
+=======
+          paddingBottom: 80,
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
           minHeight: height - 80 
         }}
         showsVerticalScrollIndicator={false}
@@ -122,7 +138,11 @@ export default function Sessions() {
               Avana checks in on your mood and provides personalized exercises.
             </Text>
             <Pressable
+<<<<<<< HEAD
               onPress={() => navigation.navigate("Meet")}
+=======
+              onPress={() => router.push("/avana-appointment")}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
               style={{
                 backgroundColor: "#F59E0B",
                 paddingVertical: 12,
@@ -142,6 +162,7 @@ export default function Sessions() {
           <View style={{ marginBottom: 12 }}>
             <Text style={{ fontWeight: "700", marginBottom: 10, fontSize: 15 }}>Quick Sessions</Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", gap: 8 }}>
+<<<<<<< HEAD
               <Pressable 
                 onPress={() => navigation.navigate("Meet")}
                 style={{
@@ -157,10 +178,25 @@ export default function Sessions() {
                   minHeight: 90,
                 }}
               >
+=======
+              <Pressable style={{
+                backgroundColor: "#FFF4E6",
+                flex: 1,
+                padding: 14,
+                borderRadius: 14,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOpacity: 0.04,
+                shadowRadius: 4,
+                elevation: 2,
+                minHeight: 90,
+              }}>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
                 <MaterialCommunityIcons name="chat" size={22} color="#EA580C" />
                 <Text style={{ marginTop: 6, fontWeight: "600", color: "#EA580C", fontSize: 13 }}>Chat Session</Text>
                 <Text style={{ fontSize: 11, color: "#9A3412", marginTop: 2 }}>Instant support</Text>
               </Pressable>
+<<<<<<< HEAD
               <Pressable 
                 onPress={() => navigation.navigate("Meet")}
                 style={{
@@ -176,6 +212,20 @@ export default function Sessions() {
                   minHeight: 90,
                 }}
               >
+=======
+              <Pressable style={{
+                backgroundColor: "#FFF4E6",
+                flex: 1,
+                padding: 14,
+                borderRadius: 14,
+                alignItems: "center",
+                shadowColor: "#000",
+                shadowOpacity: 0.04,
+                shadowRadius: 4,
+                elevation: 2,
+                minHeight: 90,
+              }}>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
                 <MaterialIcons name="video-call" size={22} color="#EA580C" />
                 <Text style={{ marginTop: 6, fontWeight: "600", color: "#EA580C", fontSize: 13 }}>Video Call</Text>
                 <Text style={{ fontSize: 11, color: "#9A3412", marginTop: 2 }}>Face-to-face</Text>
@@ -204,7 +254,10 @@ export default function Sessions() {
             upcomingSessions.map((session) => (
               <Pressable 
                 key={session.id} 
+<<<<<<< HEAD
                 onPress={() => navigation.navigate("Meet")}
+=======
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
@@ -330,7 +383,11 @@ export default function Sessions() {
                 <Text style={{ color: "#6B7280", fontSize: 11, lineHeight: 14 }}>{session.notes}</Text>
 
                 <Pressable
+<<<<<<< HEAD
                   onPress={() => navigation.navigate("ReportDetail", { id: session.id })}
+=======
+                  onPress={() => router.push(`/report-detail/${session.id}`)}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
@@ -369,7 +426,11 @@ export default function Sessions() {
               View comprehensive analytics of your mood trends and progress.
             </Text>
             <Pressable
+<<<<<<< HEAD
               onPress={() => navigation.navigate("Reports")}
+=======
+              onPress={() => router.push("/reports")}
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
               style={{
                 borderColor: "#0EA5E9",
                 borderWidth: 1.5,
@@ -384,6 +445,64 @@ export default function Sessions() {
           </View>
         </View>
       </ScrollView>
+<<<<<<< HEAD
+=======
+
+      {/* Bottom Navigation */}
+      <View style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "white",
+        paddingVertical: 10,
+        borderTopWidth: 1,
+        borderTopColor: "#F3F4F6",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        elevation: 8,
+        height: 70,
+      }}>
+        <Link href="/employees-dash" asChild>
+          <Pressable style={{ alignItems: "center", paddingHorizontal: 6, flex: 1 }}>
+            <FontAwesome5 name="home" size={18} color="#6B7280" />
+            <Text style={{ color: "#6B7280", fontSize: 11, marginTop: 4 }}>Home</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/sessions" asChild>
+          <Pressable style={{ alignItems: "center", paddingHorizontal: 6, flex: 1 }}>
+            <MaterialIcons name="calendar-today" size={18} color="#EA580C" />
+            <Text style={{ color: "#EA580C", fontSize: 11, marginTop: 4 }}>Sessions</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/forums" asChild>
+          <Pressable style={{ alignItems: "center", paddingHorizontal: 6, flex: 1 }}>
+            <MaterialCommunityIcons name="forum" size={18} color="#6B7280" />
+            <Text style={{ color: "#6B7280", fontSize: 11, marginTop: 4 }}>Forums</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/profile" asChild>
+          <Pressable style={{ alignItems: "center", paddingHorizontal: 6, flex: 1 }}>
+            <MaterialCommunityIcons name="account-circle" size={18} color="#6B7280" />
+            <Text style={{ color: "#6B7280", fontSize: 11, marginTop: 4 }}>Profile</Text>
+          </Pressable>
+        </Link>
+
+        <Link href="/settings" asChild>
+          <Pressable style={{ alignItems: "center", paddingHorizontal: 6, flex: 1 }}>
+            <MaterialIcons name="settings" size={18} color="#6B7280" />
+            <Text style={{ color: "#6B7280", fontSize: 11, marginTop: 4 }}>Settings</Text>
+          </Pressable>
+        </Link>
+      </View>
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
     </View>
   );
 }

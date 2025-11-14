@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
@@ -7,10 +8,22 @@ import {
   Text,
   TouchableOpacity,
   View,
+=======
+import React from 'react';
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  StyleSheet,
+  Image,
+  Dimensions,
+  Alert
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
+<<<<<<< HEAD
 const CompletionPage = () => {
   const navigation = useNavigation();
   const [currentSlide] = React.useState(5);
@@ -18,6 +31,15 @@ const CompletionPage = () => {
   const handleFinish = () => {
     // Navigate to the main app
     navigation.navigate('MainApp');
+=======
+const CompletionPage = ({ navigation }) => {
+  const [currentSlide] = React.useState(5);
+
+  const handleFinish = () => {
+    Alert.alert('Congratulations!', 'Your onboarding is complete!');
+    // You can navigate to the main app here
+    // navigation.navigate('MainApp');
+>>>>>>> 310b82bbb10428cd64b621ecbb86f34ccc1a2bed
   };
 
   return (
